@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AspNetCore1.Models.Carro>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h3>Carros</h3>
+    <div class="container">
+        @if (Model.ToList().Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td scope="col">Id</td>
+                        <td scope="col">Nome</td>
+                        <td scope="col">Marca</td>
+                        <td scope="col">Ano</td>
+                        <td scope="col">Ações</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var carro in Model)
+                    {
+                        <tr>
+                            <td scope="row">@carro.Id</td>
+                            <td>@Html.DisplayFor(itemModel => carro.Nome)</td>
+                            <td>@Html.DisplayFor(itemModel => carro.Marca)</td>
+                            <td>@Html.DisplayFor(itemModel => carro.Ano)</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@carro.Id" class="btn btn-info">Detalhes</a>
+                                <a asp-action="Update" asp-route-id="@carro.Id" class="btn btn-default">Atualizar</a>
+                                <a asp-action="Delete" asp-route-id="@carro.Id" class="btn btn-warning">Deletar</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3>Não há nenhum carro cadastrado</h3>
+        }
+    </div>
+
+    <div>
+        <a asp-action="NewCar" class="btn btn-primary">Cadastrar Carro</a>
+    </div>
+
+</div>
