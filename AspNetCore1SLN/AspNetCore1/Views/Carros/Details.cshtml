@@ -1,0 +1,23 @@
+﻿@model AspNetCore1.Models.Carro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <h1>@Html.DisplayFor(item => item.Nome)</h1>
+
+    <h2>@Html.DisplayFor(item => item.Marca) - @Html.DisplayFor(item => item.Ano)</h2>
+
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id neque arcu. Phasellus fringilla mauris metus, lobortis consequat tellus laoreet non. Vivamus eget quam in turpis euismod aliquet. Proin volutpat dui quis tortor vulputate pulvinar. Sed eget malesuada orci. In quis lorem lorem. In hac habitasse platea dictumst. Quisque pellentesque cursus dolor, ut luctus arcu laoreet in.
+        Sed semper metus vitae sem volutpat porta. Aliquam erat volutpat. In sem magna, interdum sit amet scelerisque a, pharetra at erat. Curabitur molestie diam nec augue ornare consectetur. Nunc vel vulputate arcu. Curabitur sit amet convallis lectus. Sed faucibus tortor erat, ac pellentesque neque porta in. Donec sapien diam, consectetur sed urna sodales, facilisis rhoncus leo. Sed et placerat nulla. Phasellus ligula arcu, faucibus in ex quis, elementum suscipit arcu.
+    </p>
+
+    <a asp-action="Index" class="btn btn-info">Página inicial</a>
+
+</div>
+

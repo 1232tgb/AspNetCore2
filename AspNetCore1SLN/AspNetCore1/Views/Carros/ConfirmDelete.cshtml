@@ -1,0 +1,31 @@
+﻿@model AspNetCore1.Models.Carro
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container">
+
+    <div class="row">
+        @Html.DisplayFor(x => x.Nome)
+    </div>
+
+    <div class="row">
+        @Html.DisplayFor(x => x.Marca)
+    </div>
+
+    <div class="row">
+        @Html.DisplayFor(x => x.Ano)
+    </div>
+
+    <form action="Delete" method="post">
+        <input asp-for="Id" type="hidden" name="Id"/>
+        <input asp-for="Nome" type="hidden" name="Nome" class="form-control" />
+        <input asp-for="Marca" type="hidden" name="Marca" class="form-control" />
+        <input asp-for="Ano" type="hidden" name="Ano" class="form-control" />
+        <input type="submit" class="btn btn-warning" value="Deletar" />
+    </form>
+
+    <a asp-action="Index" class="btn btn-info">Página inicial</a>
+</div>

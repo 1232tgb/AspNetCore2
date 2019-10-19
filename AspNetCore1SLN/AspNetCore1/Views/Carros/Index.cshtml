@@ -31,7 +31,8 @@
                             <td>
                                 <a asp-action="Details" asp-route-id="@carro.Id" class="btn btn-info">Detalhes</a>
                                 <a asp-action="Update" asp-route-id="@carro.Id" class="btn btn-default">Atualizar</a>
-                                <a asp-action="Delete" asp-route-id="@carro.Id" class="btn btn-warning">Deletar</a>
+                                @*<a asp-action="Delete" asp-route-id="@carro.Id" class="btn btn-danger">Deletar</a>*@
+                                <a asp-action="Excluir" asp-route-id="@carro.Id" class="btn btn-danger">Deletar</a>
                             </td>
 
                         </tr>
