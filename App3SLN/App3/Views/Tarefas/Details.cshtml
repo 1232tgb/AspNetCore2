@@ -1,0 +1,40 @@
+﻿@model App3.Models.Tarefas
+@{
+    ViewData["Title"] = $"Tarefa: {Model.Nome} - {Model.Id}";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container">
+    <div style="margin-bottom:10px;" class="row">
+        <h3>Tarefa escolhida:</h3>
+    </div>
+
+    <div style="margin-bottom:10px;" class="row">
+        <table>
+            <tr>
+                <td><b>Id</b> - @Model.Id</td>
+            </tr>
+            <tr>
+                <td><b>Nome</b> - @Model.Nome</td>
+            </tr>
+            <tr>
+                <td><b>Descrição</b> - @Model.Descricao</td>
+            </tr>
+            <tr>
+                <td><b>Data inicio</b> - @Model.Inicio</td>
+            </tr>
+            <tr>
+                <td><b>Data fim</b> - @Model.Fim</td>
+            </tr>
+            <tr>
+                <td><b>Nível de prioridade</b> - @Model.Importancia</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-bottom:10px;" class="row">
+        <a asp-controller="Tarefas" asp-action="Index" class="btn btn-info">Página inicial</a>
+    </div>
+
+</div>

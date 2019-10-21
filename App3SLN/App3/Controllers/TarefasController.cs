@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App3.Controllers
 {
-    [Route("[controller]")]
+
     public class TarefasController : Controller
     {
         TarefasContexto context;
@@ -25,26 +25,97 @@ namespace App3.Controllers
             return View(tarefas);
         }
 
+
         [HttpGet]
-        [Route("{Id}")]
-        public IActionResult Tarefa(int? Id)
+        public IActionResult Details(int? Id)
         {
             if (Id == null)
                 return NotFound();
 
             Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
 
-            if(tarefa == null)
+            if (tarefa == null)
                 return NotFound();
 
 
             return View(tarefa);
 
         }
-        
+     
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Tarefas tarefa)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Tarefas.Add(tarefa);
+                context.SaveChanges();
+               return RedirectToAction(nameof(Index));
+            }
+
+
+            return View(tarefa);
+        }
+
+        [HttpGet]
+        public IActionResult Update(int? Id)
+        {
+            if (Id == null)
+                return NotFound();
+
+            Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
+
+            if (tarefa == null)
+                return NotFound();
+
+
+            return View(tarefa);
+        }
+
         //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //Continuar a partir daqui com o post, depois o delete e o update
+        //public IActionResult Update(Tarefas tarefa)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        context.Tarefas.Add(tarefa);
+        //        context.SaveChanges();
+
+        //        View("ConfirmAction");
+        //    }
+
+        //    return View(tarefa);
+        //}
+
+
+        //public IActionResult Delete(int? Id)
+        //{
+        //    if (Id == null)
+        //        return NotFound();
+
+        //    Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
+
+        //    if (tarefa == null)
+        //        return NotFound();
+
+
+        //    return View(tarefa);
+        //}
+
+        //public IActionResult Delete(Tarefas tarefa)
+        //{
+
+        //    context.Tarefas.Remove(tarefa);
+        //    context.SaveChanges();
+
+        //    return View("ConfirmAction");
+        //}
+
 
     }
 }
