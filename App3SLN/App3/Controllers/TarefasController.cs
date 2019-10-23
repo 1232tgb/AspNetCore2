@@ -89,29 +89,31 @@ namespace App3.Controllers
             return View(tarefa);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int? Id)
+        {
+            if (Id == null)
+                return NotFound();
 
-        //public IActionResult Delete(int? Id)
-        //{
-        //    if (Id == null)
-        //        return NotFound();
+            Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
 
-        //    Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
-
-        //    if (tarefa == null)
-        //        return NotFound();
+            if (tarefa == null)
+                return NotFound();
 
 
-        //    return View(tarefa);
-        //}
+            return View(tarefa);
+        }
 
-        //public IActionResult Delete(Tarefas tarefa)
-        //{
+        [HttpPost]
+        public IActionResult Delete(Tarefas tarefa)
+        {
 
-        //    context.Tarefas.Remove(tarefa);
-        //    context.SaveChanges();
+            context.Tarefas.Remove(tarefa);
+            context.SaveChanges();
 
-        //    return View("ConfirmAction");
-        //}
+            ViewData["Title"] = "Tarefa deletada";
+            return View("ConfirmAction");
+        }
 
 
     }

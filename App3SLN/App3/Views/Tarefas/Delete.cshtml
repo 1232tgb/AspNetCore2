@@ -1,0 +1,53 @@
+﻿@model App3.Models.Tarefas
+@{
+    ViewData["Title"] = $"Deletar tarefa: {Model.Id} - {Model.Nome}?";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="container">
+
+    <div class="row" style="margin-bottom:10px;">
+        <h3>Detalhes da tarefa:</h3>
+    </div>
+
+    <div class="row" style="margin-bottom:10px;">
+        <table class="table">
+            <tr>
+                <td><b>Id</b> -  @Model.Id</td>
+            </tr>
+            <tr>
+                <td><b>Nome</b> -  @Model.Nome</td>
+            </tr>
+            <tr>
+                <td><b>Descrição</b> -  @Model.Descricao</td>
+            </tr>
+            <tr>
+                <td><b>Data inicio</b> -  @Model.Inicio</td>
+            </tr>
+            <tr>
+                <td><b>Data fim</b> -  @Model.Fim</td>
+            </tr>
+            <tr>
+                <td><b>Nível de prioridade</b> -  @Model.Importancia</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-bottom:10px;" class="row" >
+        <form action="Delete" method="post">
+
+            <input asp-for="Id" type="hidden" name="Id" />
+            <input asp-for="Nome" type="hidden" name="Nome" />
+            <input asp-for="Descricao" type="hidden" name="Descricao" />
+            <input asp-for="Inicio" type="hidden" name="Inicio" />
+            <input asp-for="Fim" type="hidden" name="Fim" />
+            <input asp-for="Importancia" type="hidden" name="Importancia" />
+
+            <input type="submit" value="Deletar" class="btn btn-info" />
+        </form>
+        <div>
+            <a asp-action="Index" class="btn btn-default">Cancelar</a>
+        </div>
+    </div>
+</div>
