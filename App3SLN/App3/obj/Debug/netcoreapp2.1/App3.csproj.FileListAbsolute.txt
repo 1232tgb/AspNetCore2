@@ -33,3 +33,5 @@ C:\Users\THIAGO\Desktop\GitPasta\AspNetCore2\App3SLN\App3\obj\Debug\netcoreapp2.
 C:\Users\THIAGO\Desktop\GitPasta\AspNetCore2\App3SLN\App3\obj\Debug\netcoreapp2.1\Razor\Views\Tarefas\Index.g.cshtml.cs
 C:\Users\THIAGO\Desktop\GitPasta\AspNetCore2\App3SLN\App3\obj\Debug\netcoreapp2.1\Razor\Views\Tarefas\Create.g.cshtml.cs
 C:\Users\THIAGO\Desktop\GitPasta\AspNetCore2\App3SLN\App3\obj\Debug\netcoreapp2.1\Razor\Views\Tarefas\Details.g.cshtml.cs
+C:\Users\THIAGO\Desktop\GitPasta\AspNetCore2\App3SLN\App3\obj\Debug\netcoreapp2.1\Razor\Views\Tarefas\Update.g.cshtml.cs
+C:\Users\THIAGO\Desktop\GitPasta\AspNetCore2\App3SLN\App3\obj\Debug\netcoreapp2.1\Razor\Views\Tarefas\ConfirmAction.g.cshtml.cs

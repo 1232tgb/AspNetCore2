@@ -25,7 +25,6 @@ namespace App3.Controllers
             return View(tarefas);
         }
 
-
         [HttpGet]
         public IActionResult Details(int? Id)
         {
@@ -37,11 +36,9 @@ namespace App3.Controllers
             if (tarefa == null)
                 return NotFound();
 
-
             return View(tarefa);
-
         }
-     
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -56,9 +53,8 @@ namespace App3.Controllers
             {
                 context.Tarefas.Add(tarefa);
                 context.SaveChanges();
-               return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
-
 
             return View(tarefa);
         }
@@ -74,23 +70,24 @@ namespace App3.Controllers
             if (tarefa == null)
                 return NotFound();
 
-
             return View(tarefa);
         }
 
-        //[HttpPost]
-        //public IActionResult Update(Tarefas tarefa)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        context.Tarefas.Add(tarefa);
-        //        context.SaveChanges();
+        [HttpPost]
+        public IActionResult Update(Tarefas tarefa)
+        {
+            if (ModelState.IsValid)
+            {
+                string Tarefa = $"{tarefa.Id} - {tarefa.Nome}";
+                context.Tarefas.Update(tarefa);
+                context.SaveChanges();
 
-        //        View("ConfirmAction");
-        //    }
+                ViewData["Title"] = $"Tarefa atualizada: {Tarefa}";
+                return View("ConfirmAction");
+            }
 
-        //    return View(tarefa);
-        //}
+            return View(tarefa);
+        }
 
 
         //public IActionResult Delete(int? Id)
