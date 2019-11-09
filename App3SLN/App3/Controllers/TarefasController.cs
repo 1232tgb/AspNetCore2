@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using App3.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace App3.Controllers
 {
@@ -19,19 +19,19 @@ namespace App3.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IEnumerable<Tarefas> tarefas = context.Tarefas.ToList();
+            IEnumerable<Tarefas> tarefas = await context.Tarefas.ToListAsync();
             return View(tarefas);
         }
 
         [HttpGet]
-        public IActionResult Details(int? Id)
+        public async Task<IActionResult> Details(int? Id)
         {
             if (Id == null)
                 return NotFound();
 
-            Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
+            Tarefas tarefa = await context.Tarefas.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (tarefa == null)
                 return NotFound();
@@ -47,11 +47,11 @@ namespace App3.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Tarefas tarefa)
+        public async Task<IActionResult> Create(Tarefas tarefa)
         {
             if (ModelState.IsValid)
             {
-                context.Tarefas.Add(tarefa);
+                await context.Tarefas.AddAsync(tarefa);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -60,12 +60,12 @@ namespace App3.Controllers
         }
 
         [HttpGet]
-        public IActionResult Update(int? Id)
+        public async Task<IActionResult> Update(int? Id)
         {
             if (Id == null)
                 return NotFound();
 
-            Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
+            Tarefas tarefa = await context.Tarefas.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (tarefa == null)
                 return NotFound();
@@ -74,13 +74,13 @@ namespace App3.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Tarefas tarefa)
+        public async Task<IActionResult> Update(Tarefas tarefa)
         {
             if (ModelState.IsValid)
             {
                 string Tarefa = $"{tarefa.Id} - {tarefa.Nome}";
                 context.Tarefas.Update(tarefa);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
 
                 ViewData["Title"] = $"Tarefa atualizada: {Tarefa}";
                 return View("ConfirmAction");
@@ -90,12 +90,12 @@ namespace App3.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int? Id)
+        public async Task<IActionResult> Delete(int? Id)
         {
             if (Id == null)
                 return NotFound();
 
-            Tarefas tarefa = context.Tarefas.FirstOrDefault(x => x.Id == Id);
+            Tarefas tarefa = await context.Tarefas.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (tarefa == null)
                 return NotFound();
@@ -105,11 +105,11 @@ namespace App3.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Tarefas tarefa)
+        public async Task<IActionResult> Delete(Tarefas tarefa)
         {
 
             context.Tarefas.Remove(tarefa);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
             ViewData["Title"] = "Tarefa deletada";
             return View("ConfirmAction");

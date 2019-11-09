@@ -4,6 +4,11 @@
     ViewData["Title"] = "Home";
 }
 
+<environment >
+    <link rel="stylesheet" href="~/css/MyCss.css" />
+</environment>
+
+
 <h2> @ViewData["Title"]</h2>
 
 <div class="container">
@@ -35,7 +40,7 @@
                                 <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-info">Detalhes</a>
                                 <a asp-action="Update" asp-route-id="@t.Id" class="btn btn-warning">Atualizar</a>
                                 <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger">Deletar</a>
-                                
+
 
                             </td>
                         </tr>
