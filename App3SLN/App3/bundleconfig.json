@@ -1,0 +1,50 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/unminified/GeneralCss.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/minified/GeneralCss.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/unminified/GeneralJs.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/minified/GeneralJs.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

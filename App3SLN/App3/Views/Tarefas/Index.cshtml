@@ -29,21 +29,34 @@
                 <tbody>
                     @foreach (Tarefas t in Model)
                     {
-                        <tr>
-                            <td>@t.Id</td>
-                            <td>@t.Nome</td>
-                            <td>@t.Descricao</td>
-                            <td>@t.Inicio</td>
-                            <td>@t.Fim</td>
-                            <td>@t.Importancia</td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-info">Detalhes</a>
-                                <a asp-action="Update" asp-route-id="@t.Id" class="btn btn-warning">Atualizar</a>
-                                <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger">Deletar</a>
+                    <tr>
+                        <td>@Html.DisplayFor(item => t.Id)</td>
+                        <td>@Html.DisplayFor(item => t.Nome)</td>
+                        <td>@Html.DisplayFor(item => t.Descricao)</td>
+                        <td>@Html.DisplayFor(item => t.Inicio)</td>
+                        <td>@Html.DisplayFor(item => t.Fim)</td>
+
+                        @if (t.Importancia == "Média" || t.Importancia == "Moderada")
+                        {
+                            <td class="text-warning">@Html.DisplayFor(item => t.Importancia)</td>
+                        }
+                        else if (t.Importancia == "Alta" || t.Importancia == "Crítica")
+                        {
+                            <td class="text-danger">@Html.DisplayFor(item => t.Importancia)</td>
+                        }
+                        else
+                        {
+                            <td class="text-info">@Html.DisplayFor(item => t.Importancia)</td>
+                        }
+
+                        <td>
+                            <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-info">Detalhes</a>
+                            <a asp-action="Update" asp-route-id="@t.Id" class="btn btn-warning">Atualizar</a>
+                            <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-danger">Deletar</a>
 
 
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
                     }
 
                 </tbody>
