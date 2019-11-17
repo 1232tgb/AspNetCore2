@@ -11,12 +11,10 @@ namespace App4.Controllers
     public class PessoasController : Controller
     {
         private readonly PessoasContext _context;
-        IEnumerable<Pessoa> pessoas;
 
         public PessoasController(PessoasContext context)
         {
             _context = context;
-            //pessoas = _context.Pessoas.ToList();
         }
 
         //Pega geral

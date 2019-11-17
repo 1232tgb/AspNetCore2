@@ -4,15 +4,18 @@
 }
 
 <h1>Index</h1>
+<div style="margin-bottom:10px;">
+    <a asp-action="Create" class="btn btn-info">Adicionar nova pessoa</a>
+</div>
 <div>
     @if (Model.ToList().Count > 0)
     {
-        <table class="table">
+        @*<table class="table">
             <thead>
                 <tr>
-                    <td>Id</td>
                     <td>Nome</td>
                     <td>Idade</td>
+                    <td>Ações</td>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +23,6 @@
                 @foreach (Pessoa p in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(i => p.Id)</td>
                         <td>@Html.DisplayFor(i => p.Nome)</td>
                         <td>@Html.DisplayFor(i => p.Idade)</td>
 
@@ -30,14 +32,18 @@
                             <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-danger">Deletar</a>
                         </td>
                     </tr>
-                }  
+                }
             </tbody>
-        </table>
+        </table>*@
+        @await Html.PartialAsync("_Adolescentes", Model);
+        @await Html.PartialAsync("_Adultos", Model);
+        <partial name="_Idosos" model="@Model"/>
+       
     }
     else
     {
         <h2>Não há pessoas cadastradas.</h2>
     }
-    </div>
+</div>
 
-<a asp-action="Create" class="btn btn-info">Adicionar nova pessoa</a>
+

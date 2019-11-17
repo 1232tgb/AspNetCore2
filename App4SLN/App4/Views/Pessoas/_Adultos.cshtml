@@ -1,0 +1,49 @@
+﻿@model IEnumerable<App4.Models.Pessoa>
+
+@{
+    bool isThereAdults = Model.Any(x => x.Idade >= 18 && x.Idade <= 59);
+    int numberAdults = Model.Count(x => x.Idade >= 18 && x.Idade <= 59);
+}
+
+@if (isThereAdults)
+{
+<div class="panel panel-default">
+    <div class="panel-heading">Adultos cadastrados @numberAdults</div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Idade)
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                    {
+                @if (item.Idade >= 18 && item.Idade <= 59)
+                        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Idade)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalhes</a>
+                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
+                    </td>
+                </tr>
+                        }
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>
+}
