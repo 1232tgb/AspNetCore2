@@ -1,0 +1,38 @@
+﻿@model App4.Models.Pessoa
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<style>
+</style>
+
+<div class="container">
+    <table>
+        <tr>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <td>@Model.Nome</td>
+        </tr>
+        <tr>
+            <td>@Model.Idade</td>
+        </tr>
+    </table>
+
+    <p>deseja mesmo deletar o cadastro de Id <b>@Model.Id</b></p>
+
+    <div class="btns">
+        <div>
+            <form action="Delete" method="post">
+                <input type="hidden" asp-for="Id" name="Id" />
+                <input type="hidden" asp-for="Nome" name="Nome" />
+                <input type="hidden" asp-for="Idade" name="Idade" />
+                <input type="submit" name="Confirmar" value="Confirmar" class="btn btn-info" />
+            </form>
+        </div>
+        <div>
+            <a asp-controller="Pessoas" asp-action="Index" class="btn btn-primary">Voltar à página inicial</a>
+        </div>
+    </div>
+
+</div>

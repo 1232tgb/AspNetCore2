@@ -1,0 +1,43 @@
+﻿@model IEnumerable<App4.Models.Pessoa>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div>
+    @if (Model.ToList().Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Idade</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (Pessoa p in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(i => p.Id)</td>
+                        <td>@Html.DisplayFor(i => p.Nome)</td>
+                        <td>@Html.DisplayFor(i => p.Idade)</td>
+
+                        <td>
+                            <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-info">Detalhes</a>
+                            <a asp-action="Update" asp-route-id="@p.Id" class="btn btn-warning">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-danger">Deletar</a>
+                        </td>
+                    </tr>
+                }  
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h2>Não há pessoas cadastradas.</h2>
+    }
+    </div>
+
+<a asp-action="Create" class="btn btn-info">Adicionar nova pessoa</a>

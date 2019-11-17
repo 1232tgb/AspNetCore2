@@ -1,0 +1,20 @@
+﻿@model App4.Models.Pessoa
+@{
+    ViewData["Title"] = "Informações de " + Model.Nome;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table>
+    <tr>
+        <p><b>Id</b> - @Html.DisplayFor(i => i.Id)</p>
+    </tr>
+    <tr>
+        <p><b>Nome</b> - @Html.DisplayFor(i => i.Nome)</p>
+    </tr>
+    <tr>
+        <p><b>Idade</b> - @Html.DisplayFor(i => i.Idade)</p>
+    </tr>
+</table>
+
+<a asp-controller="Pessoas" asp-action="Index" class="btn btn-info">Página inicial</a>
