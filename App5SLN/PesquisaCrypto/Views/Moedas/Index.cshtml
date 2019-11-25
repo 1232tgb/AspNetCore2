@@ -1,0 +1,116 @@
+﻿@model IEnumerable<PesquisaCrypto.Models.Moedas>
+
+<h2>Moedas</h2>
+
+<div>
+    <a asp-action="Create" class="btn btn-info">Criar Moeda</a>
+</div>
+
+@*<div class="container">
+    <table class="table">
+        @if (Model.Count() > 0)
+        {
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Quantidade</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => m.Nome)</td>
+                        <td>@Html.DisplayFor(x => m.Quantidade)</td>
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            <p>Sem moedas</p>
+        }
+    </table>
+</div>*@
+
+<div>
+    <div class="well col-lg-6">
+        @await Component.InvokeAsync("Moedas")
+    </div>
+
+    <div class="well col-lg-6">
+        <partial name="Grafico" />
+    </div>
+
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+
+    function PegarMoedas(dados) {
+        let moedas = [];
+        let index = 0;
+
+        while (index < dados.length) {
+            moedas.push(dados[index].nome);
+            index++;
+        }
+        console.log(moedas);
+        return moedas;
+    }
+
+    function PegarQuantidades(dados) {
+
+        let valores = [];
+        let index = 0;
+
+        while (index < dados.length) {
+            valores.push(dados[index].quantidade);
+            index++;
+        }
+        console.log(valores);
+        return valores;
+    }
+
+    function PegarCores(quantidade) {
+
+        let cores = [];
+        let index = 0;
+        while (index < quantidade) {
+            let r = Math.floor(Math.random() * 255);
+            let g = Math.floor(Math.random() * 255);
+            let b = Math.floor(Math.random() * 255);
+
+            let cor = `rgb(${r},${g},${b})`;
+            cores.push(cor);
+            index++;
+        }
+        console.log(cores);
+        return cores;
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: 'Moedas/DadosGrafico',
+        success: function (dados) {
+            new Chart($("#grafico"), {
+                type: 'pie',
+                data: {
+                    labels: PegarMoedas(dados),
+                    datasets: [{
+                        labels: 'Quantidade',
+                        borderWidth: 2,
+                        backgroundColor: PegarCores(dados.length),
+                        data: PegarQuantidades(dados)
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Quantidade em cada moeda'
+                    }
+                }
+            })
+        }
+    })
+</script>

@@ -1,0 +1,23 @@
+﻿@model PesquisaCrypto.Models.Moedas
+
+<h2>Criar Moeda</h2>
+
+<div class="container">
+    <form asp-action="Create" method="post" class="form-group">
+
+        <div class="col-md-4">
+            <div class="row">
+                <input type="text" placeholder="Nome" asp-for="Nome" name="Nome" class="form-control" />
+            </div>
+            <div class="row">
+                <input type="number" placeholder="Quantidade" asp-for="Quantidade" name="Quantidade" class="form-control" />
+            </div>
+            <div class="row">
+                <input type="submit" name="Submit" value="Criar Moeda" class="btn btn-info" />
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary">Página inicial</a>
+</div>
